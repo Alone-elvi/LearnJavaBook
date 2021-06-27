@@ -7,16 +7,22 @@ public class Calculator {
     JPanel windowContent;
 
     JTextField displayField;
-    JButton button0;
-    JButton button1;
-    JButton button2;
-    JButton button3;
-    JButton button4;
-    JButton button5;
-    JButton button6;
-    JButton button7;
-    JButton button8;
-    JButton button9;
+    JFormattedTextField displayFormattedField;
+
+    JButton[] buttons = new JButton[10];
+    ;
+
+//    JButton button0;
+//    JButton button1;
+//    JButton button2;
+//    JButton button3;
+//    JButton button4;
+//    JButton button5;
+//    JButton button6;
+//    JButton button7;
+//    JButton button8;
+//    JButton button9;
+
     JButton buttonPlus;
     JButton buttonMinus;
     JButton buttonMultiply;
@@ -40,21 +46,32 @@ public class Calculator {
 
 //  Создаём и отображаем поле. Добавляем его в "Северную" область экрана
 
-        displayField = new JTextField(30);
-        windowContent.add("North", displayField);
+//        displayField = new JTextField(30);
+//        windowContent.add("North", displayField);
+
+//  Создаём и отображаем форматированное поле. Добавляем его в "Северную" область экрана
+
+        displayFormattedField = new JFormattedTextField();
+        displayFormattedField.setHorizontalAlignment(SwingConstants.RIGHT);
+        windowContent.add("North", displayFormattedField);
 
 //  Создаём кнопки, используя конструктор класса JButton, который принимает текст кнопки в качестве параметра
 
-        button0 = new JButton("0");
-        button1 = new JButton("1");
-        button2 = new JButton("2");
-        button3 = new JButton("3");
-        button4 = new JButton("4");
-        button5 = new JButton("5");
-        button6 = new JButton("6");
-        button7 = new JButton("7");
-        button8 = new JButton("8");
-        button9 = new JButton("9");
+//  Тут пробуем создать кнопки помещая значения в массив
+
+        for (int i = 0; i < 10; i++) {
+            buttons[i] = new JButton("" + i);
+        }
+//        button0 = new JButton("0");
+//        button1 = new JButton("1");
+//        button2 = new JButton("2");
+//        button3 = new JButton("3");
+//        button4 = new JButton("4");
+//        button5 = new JButton("5");
+//        button6 = new JButton("6");
+//        button7 = new JButton("7");
+//        button8 = new JButton("8");
+//        button9 = new JButton("9");
 
         buttonPoint = new JButton(".");
         buttonEqual = new JButton("=");
@@ -79,16 +96,27 @@ public class Calculator {
 
 //  Добавляем кнопки на панель
 
-        p1.add(button1);
-        p1.add(button2);
-        p1.add(button3);
-        p1.add(button4);
-        p1.add(button5);
-        p1.add(button6);
-        p1.add(button7);
-        p1.add(button8);
-        p1.add(button9);
-        p1.add(button0);
+//  Добавляем кнопки на панель из массива
+
+        for (int i = 1; i <= 10; i++) {
+            if (i == 10){
+                p1.add(buttons[0]);
+                continue;
+            }
+            p1.add(buttons[i]);
+        }
+
+//        p1.add(button1);
+//        p1.add(button2);
+//        p1.add(button3);
+//        p1.add(button4);
+//        p1.add(button5);
+//        p1.add(button6);
+//        p1.add(button7);
+//        p1.add(button8);
+//        p1.add(button9);
+//        p1.add(button0);
+
         p1.add(buttonPoint);
         p1.add(buttonEqual);
 
