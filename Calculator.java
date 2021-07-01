@@ -32,6 +32,8 @@ public class Calculator {
 
     JPanel p1, p2;
 
+
+
     //  В конструкторе создаются все компоненты и добавлятся на фрейм с помощью комбинации BorderLayout и GridLayout
     Calculator() {
 
@@ -57,10 +59,11 @@ public class Calculator {
 
 //  Создаём кнопки, используя конструктор класса JButton, который принимает текст кнопки в качестве параметра
 
-//  Тут пробуем создать кнопки помещая значения в массив
-
+//  Тут пробуем создать кнопки помещая значения в массив и добавляем действие
+        CalculatorEngine calcEngine = new CalculatorEngine(this);
         for (int i = 0; i < 10; i++) {
             buttons[i] = new JButton("" + i);
+            buttons[i].addActionListener(calcEngine);
         }
 //        button0 = new JButton("0");
 //        button1 = new JButton("1");
@@ -74,12 +77,22 @@ public class Calculator {
 //        button9 = new JButton("9");
 
         buttonPoint = new JButton(".");
+        buttonPoint.addActionListener(calcEngine);
+
         buttonEqual = new JButton("=");
+        buttonEqual.addActionListener(calcEngine);
 
         buttonPlus = new JButton("+");
+        buttonPlus.addActionListener(calcEngine);
+
         buttonMinus = new JButton("-");
+        buttonMinus.addActionListener(calcEngine);
+
         buttonMultiply = new JButton("*");
+        buttonMultiply.addActionListener(calcEngine);
+
         buttonDivide = new JButton("/");
+        buttonDivide.addActionListener(calcEngine);
 
 
 //  Создаём панель с GridLayout, которая содержит 12 кнопок. 10 кнопок с числами и кнопки с точной и знаком равно.
@@ -99,7 +112,7 @@ public class Calculator {
 //  Добавляем кнопки на панель из массива
 
         for (int i = 1; i <= 10; i++) {
-            if (i == 10){
+            if (i == 10) {
                 p1.add(buttons[0]);
                 continue;
             }
