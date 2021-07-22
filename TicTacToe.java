@@ -11,13 +11,20 @@ public class TicTacToe {
     JPanel windowContent;
     JButton[] buttons = new JButton[9];
     JButton button_new_game = new JButton("New Game");
-    JPanel p1, p2;
+    JPanel p1, p2, topPanel;
     int emptySquaresLeft = 9;
+    JLabel topPanelLabel;
 
     TicTacToe() {
+        topPanel = new JPanel();
+        GridLayout topPanelGrid = new GridLayout(1, 3);
+        topPanel.setLayout(topPanelGrid);
+        topPanelLabel = new JLabel("Your Turn!");
+        topPanel.add(topPanelLabel, "South");
+
         p1 = new JPanel();
-        GridLayout g1 = new GridLayout(3, 3);
-        p1.setLayout(g1);
+        GridLayout centerPanel = new GridLayout(3, 3);
+        p1.setLayout(centerPanel);
 
         //  Тут пробуем создать кнопки помещая значения в массив и добавляем действие
         TicTacToeEngine ticTacToeEngine = new TicTacToeEngine(this);
@@ -25,7 +32,7 @@ public class TicTacToe {
         for (int i = 0; i < 9; i++) {
             buttons[i] = new JButton();
             buttons[i].addActionListener(ticTacToeEngine);
-            buttons[i].setBackground(Color.ORANGE);
+            buttons[i].setBackground(Color.CYAN);
             p1.add(buttons[i]);
         }
 
