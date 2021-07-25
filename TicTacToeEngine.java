@@ -51,6 +51,14 @@ public class TicTacToeEngine implements ActionListener {
                 break;
             }
         }
+        if (winner.equals("X")){
+            parent.topPanelLabel.setText("You won!");
+        } else if (winner.equals("O")){
+            parent.topPanelLabel.setText("You lost!");
+        } else if (winner.equals("T")){
+            parent.topPanelLabel.setText("It's a tie!");
+        }
+
     }
 
     // делаем недоступными клетки и доступной кнопку "NewGame"
@@ -227,68 +235,67 @@ public class TicTacToeEngine implements ActionListener {
 
         // Проверяем ряд 1 - элементы массива 0, 1, 2
 
-        if (parent.buttons[0].getLabel().equals("") &&
+        if (!parent.buttons[0].getLabel().equals("") &&
                 parent.buttons[0].getLabel().equals(parent.buttons[1].getLabel()) &&
                 parent.buttons[0].getLabel().equals(parent.buttons[2].getLabel())) {
             theWinner = parent.buttons[0].getLabel();
             highlightWinner(0, 1, 2);
-
         } else
             // Проверяем ряд 2 - элементы массива 3, 4, 5
-            if (parent.buttons[0].getLabel().equals("") &&
-                    parent.buttons[0].getLabel().equals(parent.buttons[4].getLabel()) &&
-                    parent.buttons[0].getLabel().equals(parent.buttons[5].getLabel())) {
+            if (!parent.buttons[3].getLabel().equals("") &&
+                    parent.buttons[3].getLabel().equals(parent.buttons[4].getLabel()) &&
+                    parent.buttons[3].getLabel().equals(parent.buttons[5].getLabel())) {
                 theWinner = parent.buttons[3].getLabel();
                 highlightWinner(3, 4, 5);
             } else
                 // Проверяем ряд 3 - элементы массива 6, 7, 8
-                if (parent.buttons[0].getLabel().equals("") &&
-                        parent.buttons[0].getLabel().equals(parent.buttons[7].getLabel()) &&
-                        parent.buttons[0].getLabel().equals(parent.buttons[8].getLabel())) {
+                if (!parent.buttons[6].getLabel().equals("") &&
+                        parent.buttons[6].getLabel().equals(parent.buttons[7].getLabel()) &&
+                        parent.buttons[6].getLabel().equals(parent.buttons[8].getLabel())) {
                     theWinner = parent.buttons[6].getLabel();
                     highlightWinner(6, 7, 8);
                 } else
                     // Проверяем колонку 1 - элементы массива 0, 3, 6
-                    if (parent.buttons[0].getLabel().equals("") &&
+                    if (!parent.buttons[0].getLabel().equals("") &&
                             parent.buttons[0].getLabel().equals(parent.buttons[3].getLabel()) &&
                             parent.buttons[0].getLabel().equals(parent.buttons[6].getLabel())) {
                         theWinner = parent.buttons[0].getLabel();
                         highlightWinner(0, 3, 6);
                     } else
                         // Проверяем колонку 2 - элементы массива 1, 4, 7
-                        if (parent.buttons[0].getLabel().equals("") &&
-                                parent.buttons[0].getLabel().equals(parent.buttons[4].getLabel()) &&
-                                parent.buttons[0].getLabel().equals(parent.buttons[7].getLabel())) {
+                        if (!parent.buttons[1].getLabel().equals("") &&
+                                parent.buttons[1].getLabel().equals(parent.buttons[4].getLabel()) &&
+                                parent.buttons[1].getLabel().equals(parent.buttons[7].getLabel())) {
                             theWinner = parent.buttons[1].getLabel();
                             highlightWinner(1, 4, 7);
                         } else
                             // Проверяем колонку 3 - элементы массива 2, 5, 8
-                            if (parent.buttons[0].getLabel().equals("") &&
-                                    parent.buttons[0].getLabel().equals(parent.buttons[5].getLabel()) &&
-                                    parent.buttons[0].getLabel().equals(parent.buttons[8].getLabel())) {
+                            if (!parent.buttons[2].getLabel().equals("") &&
+                                    parent.buttons[2].getLabel().equals(parent.buttons[5].getLabel()) &&
+                                    parent.buttons[2].getLabel().equals(parent.buttons[8].getLabel())) {
                                 theWinner = parent.buttons[2].getLabel();
                                 highlightWinner(2, 5, 8);
                             } else
                                 // Проверяем диагональ 1 - элементы массива 0, 4, 8
-                                if (parent.buttons[0].getLabel().equals("") &&
+                                if (!parent.buttons[0].getLabel().equals("") &&
                                         parent.buttons[0].getLabel().equals(parent.buttons[4].getLabel()) &&
                                         parent.buttons[0].getLabel().equals(parent.buttons[8].getLabel())) {
                                     theWinner = parent.buttons[0].getLabel();
                                     highlightWinner(0, 4, 8);
                                 } else
                                     // Проверяем диагональ 2 - элементы массива 3, 4, 6
-                                    if (parent.buttons[0].getLabel().equals("") &&
-                                            parent.buttons[0].getLabel().equals(parent.buttons[4].getLabel()) &&
-                                            parent.buttons[0].getLabel().equals(parent.buttons[6].getLabel())) {
+                                    if (!parent.buttons[2].getLabel().equals("") &&
+                                            parent.buttons[2].getLabel().equals(parent.buttons[4].getLabel()) &&
+                                            parent.buttons[2].getLabel().equals(parent.buttons[6].getLabel())) {
                                         theWinner = parent.buttons[2].getLabel();
-                                        highlightWinner(3, 4, 6);
+                                        highlightWinner(2, 4, 6);
                                     }
         return theWinner;
     }
 
     private void highlightWinner(int win1, int win2, int win3) {
-        parent.buttons[win1].setBackground(Color.CYAN);
-        parent.buttons[win2].setBackground(Color.CYAN);
-        parent.buttons[win3].setBackground(Color.CYAN);
+        parent.buttons[win1].setBackground(Color.ORANGE);
+        parent.buttons[win2].setBackground(Color.ORANGE);
+        parent.buttons[win3].setBackground(Color.ORANGE);
     }
 }

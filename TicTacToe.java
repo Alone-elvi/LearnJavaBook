@@ -58,6 +58,7 @@ public class TicTacToe {
 
 //  Помещаем панель p1 в центральную область окна.
 
+        windowContent.add("North", topPanel);
         windowContent.add("Center", p1);
         windowContent.add("South", p2);
 //  Создаём фрейм и задаём его основную панель
